@@ -4,6 +4,7 @@ const { width, height } = Dimensions.get('window');
 export const COLORS = {
   primary: '#062033',
   white: '#FFF',
+  lightGray: '#DDD',
 };
 
 export const SIZES = {
@@ -61,6 +62,11 @@ export const FONTS = {
     fontFamily: 'Roboto-Regular',
     fontSize: SIZES.body5,
     lineHeight: 22,
+  },
+  category: {
+    fontFamily: 'Roboto-LightItalic',
+    fontSize: SIZES.h5,
+    lineHeight: 20,
   },
 };
 

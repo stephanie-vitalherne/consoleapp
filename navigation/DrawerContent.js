@@ -4,7 +4,8 @@ import { DrawerContentScrollView } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Fontisto';
 
 import DrawerItem from './DrawerItem';
-import { images, COLORS, SIZES, FONTS } from '../constants';
+import { images, COLORS, SIZES, FONTS, constants } from '../constants';
+const home = constants.drawerItems[0];
 
 const DrawerContent = ({ navigation }) => {
   return (
@@ -17,7 +18,7 @@ const DrawerContent = ({ navigation }) => {
           <TouchableOpacity
             style={styles.close}
             onPress={() => navigation.closeDrawer()}>
-            <Icon name="close" color={COLORS.white} size={30} />
+            <Icon name="close-a" color={COLORS.white} size={17} />
           </TouchableOpacity>
         </View>
 
@@ -27,14 +28,30 @@ const DrawerContent = ({ navigation }) => {
           onPress={() => console.log('Profile')}>
           <Image source={images.logo} style={styles.avatar} />
           <View style={styles.profileDetails}>
-            <Text style={styles.username}>Wasabi Customer</Text>
+            <Text style={styles.username}>John Cena</Text>
             <Text style={styles.text}>View your profile</Text>
           </View>
         </TouchableOpacity>
 
         {/* Drawer Items */}
         <View style={styles.itemsContainer}>
-          <DrawerItem label="Home" icon="home" />
+          <DrawerItem type={home.type} icon={home.icon} label={home.label} />
+          {constants.drawerItems.slice(1, 4).map(item => (
+            <>
+              <Text style={styles.drawerCategory}>{item.category}</Text>
+              {item.items.map(i => (
+                <DrawerItem type={i.type} icon={i.icon} label={i.label} />
+              ))}
+              <View style={styles.divider} />
+            </>
+          ))}
+        </View>
+
+        {/* Footer */}
+        <View style={styles.drawerFooter}>
+          {constants.drawerItems[4].items.map(item => (
+            <DrawerItem type={item.type} icon={item.icon} label={item.label} />
+          ))}
         </View>
       </View>
     </DrawerContentScrollView>
@@ -60,8 +77,8 @@ const styles = StyleSheet.create({
   icon: {
     width: 35,
     height: 35,
-    tintColor: COLORS.white,
     borderRadius: 32,
+    tintColor: COLORS.white,
   },
   profileContainer: {
     flexDirection: 'row',
@@ -87,6 +104,20 @@ const styles = StyleSheet.create({
   itemsContainer: {
     flex: 1,
     marginTop: SIZES.padding,
+  },
+  divider: {
+    height: 0.5,
+    marginLeft: SIZES.radius,
+    marginVertical: SIZES.radius,
+    backgroundColor: COLORS.lightGray,
+  },
+  drawerCategory: {
+    color: COLORS.white,
+    marginLeft: SIZES.base,
+    ...FONTS.category,
+  },
+  drawerFooter: {
+    marginBottom: SIZES.padding,
   },
 });
 

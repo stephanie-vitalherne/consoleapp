@@ -1,24 +1,31 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Icon from 'react-native-dynamic-vector-icons';
 
-import { SIZES } from '../constants';
+import { COLORS, FONTS, SIZES } from '../constants';
 
-const DrawerItem = ({ label, icon }) => {
+const DrawerItem = ({ label, icon, type }) => {
   return (
     <TouchableOpacity style={styles.mainContainer} onPress={() => {}}>
-      <Text>DrawerItem</Text>
+      <Icon name={icon} type={type} color={COLORS.white} />
+      <Text style={styles.label}>{label}</Text>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   mainContainer: {
-    height: 40,
+    height: 28,
     alignItems: 'center',
     flexDirection: 'row',
     marginBottom: SIZES.base,
     borderRadius: SIZES.base,
     paddingLeft: SIZES.radius,
+  },
+  label: {
+    marginLeft: 15,
+    color: COLORS.white,
+    ...FONTS.h3,
   },
 });
 
