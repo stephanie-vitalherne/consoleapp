@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { DrawerContentScrollView } from '@react-navigation/drawer';
+import Icon from 'react-native-vector-icons/Fontisto';
 
 import DrawerItem from './DrawerItem';
 import { images, COLORS, SIZES, FONTS } from '../constants';
@@ -16,8 +17,7 @@ const DrawerContent = ({ navigation }) => {
           <TouchableOpacity
             style={styles.close}
             onPress={() => navigation.closeDrawer()}>
-            {/* Vector icon will go here */}
-            <Text style={styles.text}>X</Text>
+            <Icon name="close" color={COLORS.white} size={30} />
           </TouchableOpacity>
         </View>
 
