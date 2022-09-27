@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
+import { COLORS } from '../constants';
 import { MainLayout } from '../src/screens';
 import DrawerContent from './DrawerContent';
 
@@ -34,7 +35,7 @@ const DrawerStack = () => {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    backgroundColor: '#062033',
+    backgroundColor: COLORS.primary,
   },
   drawer: {
     flex: 1,
