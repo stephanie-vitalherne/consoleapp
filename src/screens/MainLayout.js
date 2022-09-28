@@ -28,9 +28,33 @@ const MainLayout = ({
   selectedTab,
   setSelectedTab,
 }) => {
+  const homeTabFlex = useSharedValue(1);
+  const homeTabColor = useSharedValue(COLORS.white);
+
+  const homeFlexStyle = useAnimatedStyle(() => {
+    return {
+      flex: homeTabFlex.value,
+    };
+  });
+  const homeColorStyle = useAnimatedStyle(() => {
+    return {
+      backgroundColor: homeTabColor.value,
+    };
+  });
+
   useEffect(() => {
     setSelectedTab(constants.screens.home);
   }, []);
+
+  useEffect(() => {
+    if (selectedTab === constants.screens.home) {
+      homeTabFlex.value = withTiming(4, { duration: 500 });
+      homeTabColor.value = withTiming(COLORS.primary, { duration: 500 });
+    } else {
+      homeTabFlex.value = withTiming(1, { duration: 500 });
+      homeTabColor.value = withTiming(COLORS.white, { duration: 500 });
+    }
+  }, [selectedTab]);
 
   return (
     <Animated.View style={[styles.mainContainer, { ...drawerAnimationStyle }]}>
@@ -71,7 +95,9 @@ const MainLayout = ({
           <TabButton
             icon="home"
             label={constants.screens.home}
-            isFocused={selectedTab == constants.screens.home}
+            outerContainerStyle={homeFlexStyle}
+            innerContainerStyle={homeColorStyle}
+            isFocused={selectedTab === constants.screens.home}
             onPress={() => setSelectedTab(constants.screens.home)}
           />
         </View>

@@ -4,12 +4,24 @@ import Animated from 'react-native-reanimated';
 import Icon from 'react-native-dynamic-vector-icons';
 import { COLORS, FONTS, SIZES } from '../../constants';
 
-const TabButton = ({ icon, type, label, isFocused, onPress }) => {
+const TabButton = ({
+  icon,
+  type,
+  label,
+  isFocused,
+  onPress,
+  outerContainerStyle,
+  innerContainerStyle,
+}) => {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <Animated.View style={styles.outterContainer}>
-        <Animated.View style={styles.innerContainer}>
-          <Icon name={icon} type={type} color={COLORS.gray2} />
+      <Animated.View style={[styles.outerContainer, outerContainerStyle]}>
+        <Animated.View style={[styles.innerContainer, innerContainerStyle]}>
+          <Icon
+            name={icon}
+            type={type}
+            color={isFocused ? COLORS.white : COLORS.gray2}
+          />
           {isFocused && (
             <Text numberOfLines={1} style={styles.label}>
               {label}
@@ -22,7 +34,7 @@ const TabButton = ({ icon, type, label, isFocused, onPress }) => {
 };
 
 const styles = StyleSheet.create({
-  outterContainer: {
+  outerContainer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -37,7 +49,7 @@ const styles = StyleSheet.create({
   },
   label: {
     marginLeft: SIZES.base,
-    color: SIZES.gray2,
+    color: SIZES.white,
     ...FONTS.h3,
   },
 });
