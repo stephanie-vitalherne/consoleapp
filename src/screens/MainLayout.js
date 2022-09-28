@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
+import Animated from 'react-native-reanimated';
 
-const MainLayout = () => {
+// TODO:figure out the animated drawer config
+const MainLayout = ({ drawerAnimationStyle }) => {
   return (
-    <View style={styles.mainContainer}>
+    <Animated.View style={[styles.mainContainer, { ...drawerAnimationStyle }]}>
       <Text>MainLayout</Text>
-    </View>
+    </Animated.View>
   );
 };
 
@@ -14,6 +16,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#FFF',
   },
 });
 

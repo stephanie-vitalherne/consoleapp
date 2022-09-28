@@ -38,9 +38,16 @@ const DrawerContent = ({ navigation }) => {
           <DrawerItem type={home.type} icon={home.icon} label={home.label} />
           {constants.drawerItems.slice(1, 4).map(item => (
             <>
-              <Text style={styles.drawerCategory}>{item.category}</Text>
+              <Text key={item.id} style={styles.drawerCategory}>
+                {item.category}
+              </Text>
               {item.items.map(i => (
-                <DrawerItem type={i.type} icon={i.icon} label={i.label} />
+                <DrawerItem
+                  key={i.id}
+                  type={i.type}
+                  icon={i.icon}
+                  label={i.label}
+                />
               ))}
               <View style={styles.divider} />
             </>
