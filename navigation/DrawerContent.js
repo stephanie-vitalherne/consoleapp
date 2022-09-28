@@ -7,7 +7,7 @@ import DrawerItem from './DrawerItem';
 import { images, COLORS, SIZES, FONTS, constants } from '../constants';
 const home = constants.drawerItems[0];
 
-const DrawerContent = ({ navigation }) => {
+const DrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
   return (
     <DrawerContentScrollView
       scrollEnabled
@@ -47,6 +47,12 @@ const DrawerContent = ({ navigation }) => {
                   type={i.type}
                   icon={i.icon}
                   label={i.label}
+                  isFocused={selectedTab === i.label}
+                  onPress={() => {
+                    // TODO: get focus to work
+                    setSelectedTab(i.label);
+                    navigation.navigate('MainLayout');
+                  }}
                 />
               ))}
               <View style={styles.divider} />
@@ -57,7 +63,12 @@ const DrawerContent = ({ navigation }) => {
         {/* Footer */}
         <View style={styles.drawerFooter}>
           {constants.drawerItems[4].items.map(item => (
-            <DrawerItem type={item.type} icon={item.icon} label={item.label} />
+            <DrawerItem
+              key={item.id}
+              type={item.type}
+              icon={item.icon}
+              label={item.label}
+            />
           ))}
         </View>
       </View>

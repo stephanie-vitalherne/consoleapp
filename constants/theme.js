@@ -5,6 +5,7 @@ export const COLORS = {
   primary: '#062033',
   white: '#FFF',
   lightGray: '#DDD',
+  transparentBlack: 'rgba(0, 0, 0, 0.1)',
 };
 
 export const SIZES = {

@@ -4,9 +4,14 @@ import Icon from 'react-native-dynamic-vector-icons';
 
 import { COLORS, FONTS, SIZES } from '../constants';
 
-const DrawerItem = ({ label, icon, type }) => {
+const DrawerItem = ({ label, icon, type, isFocused, onPress }) => {
   return (
-    <TouchableOpacity style={styles.mainContainer} onPress={() => {}}>
+    <TouchableOpacity
+      style={[
+        styles.mainContainer,
+        { backgroundColor: isFocused ? COLORS.transparentBlack : null },
+      ]}
+      onPress={onPress}>
       <Icon name={icon} type={type} color={COLORS.white} />
       <Text style={styles.label}>{label}</Text>
     </TouchableOpacity>

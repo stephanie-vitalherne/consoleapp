@@ -5,6 +5,8 @@ import {
   useDrawerProgress,
 } from '@react-navigation/drawer';
 import Animated, { useAnimatedStyle } from 'react-native-reanimated';
+import { connect } from 'react-redux';
+import { setSelectedTab } from '../store/tab/tabActions';
 
 import { COLORS } from '../constants';
 import { MainLayout } from '../src/screens';
@@ -12,7 +14,7 @@ import DrawerContent from './DrawerContent';
 
 const Drawer = createDrawerNavigator();
 
-const DrawerStack = () => {
+const DrawerStack = ({ selectedTab, setSelectedTab }) => {
   // TODO:figure out the animated drawer config
   // const progress = useDrawerProgress();
   // const scale = Animated.interpolateNode(progress.value, {
@@ -43,7 +45,13 @@ const DrawerStack = () => {
           sceneContainerStyle: styles.drawerContainer,
         }}
         drawerContent={props => {
-          return <DrawerContent navigation={props.navigation} />;
+          return (
+            <DrawerContent
+              navigation={props.navigation}
+              selectedTab={selectedTab}
+              setSelectedTab={setSelectedTab}
+            />
+          );
         }}>
         <Drawer.Screen name="MainLayout">
           {props => <MainLayout {...props} />}
@@ -69,4 +77,18 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DrawerStack;
+function mapStateToProps(state) {
+  return {
+    selectedTab: state.tabReducer.selectedTab,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setSelectedTab: selectedTab => {
+      return dispatch(setSelectedTab(selectedTab));
+    },
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrawerStack);
