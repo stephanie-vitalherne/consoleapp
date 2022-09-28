@@ -3,29 +3,40 @@ const screens = {
   home: 'Home',
   buckets: 'Buckets',
   policies: 'Policies',
-  access_keys: 'Access Keys',
+  users: 'Users',
+  settings: 'Settings',
 };
 
 const bottom_tabs = [
   {
     id: 0,
     label: screens.home,
+    icon: 'md-home',
+    type: 'Ionicons',
   },
   {
     id: 1,
     label: screens.buckets,
+    icon: 'bucket-outline',
+    type: 'MaterialCommunityIcons',
   },
   {
     id: 2,
-    label: screens.home,
+    label: screens.policies,
+    icon: 'clipboard-notes',
+    type: 'Foundation',
   },
   {
     id: 3,
-    label: screens.home,
+    label: screens.users,
+    icon: 'people',
+    type: 'MaterialIcons',
   },
   {
     id: 4,
-    label: screens.home,
+    label: screens.settings,
+    icon: 'cog',
+    type: 'FontAwesome5',
   },
 ];
 

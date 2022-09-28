@@ -92,14 +92,18 @@ const MainLayout = ({
           style={styles.gradient}
         />
         <View style={styles.tabsContainer}>
-          <TabButton
-            icon="home"
-            label={constants.screens.home}
-            outerContainerStyle={homeFlexStyle}
-            innerContainerStyle={homeColorStyle}
-            isFocused={selectedTab === constants.screens.home}
-            onPress={() => setSelectedTab(constants.screens.home)}
-          />
+          {constants.bottom_tabs.map(tab => (
+            <TabButton
+              key={tab.id}
+              icon={tab.icon}
+              type={tab.type}
+              label={constants.screens.home}
+              outerContainerStyle={homeFlexStyle}
+              innerContainerStyle={homeColorStyle}
+              isFocused={selectedTab === constants.screens.home}
+              onPress={() => setSelectedTab(constants.screens.home)}
+            />
+          ))}
         </View>
       </View>
     </Animated.View>
