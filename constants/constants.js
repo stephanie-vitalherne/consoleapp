@@ -1,3 +1,34 @@
+const screens = {
+  main_layout: 'MainLayout',
+  home: 'Home',
+  buckets: 'Buckets',
+  policies: 'Policies',
+  access_keys: 'Access Keys',
+};
+
+const bottom_tabs = [
+  {
+    id: 0,
+    label: screens.home,
+  },
+  {
+    id: 1,
+    label: screens.buckets,
+  },
+  {
+    id: 2,
+    label: screens.home,
+  },
+  {
+    id: 3,
+    label: screens.home,
+  },
+  {
+    id: 4,
+    label: screens.home,
+  },
+];
+
 const drawerItems = [
   {
     id: 1,
@@ -96,4 +127,4 @@ const drawerItems = [
   },
 ];
 
-export default { drawerItems };
+export default { screens, bottom_tabs, drawerItems };
