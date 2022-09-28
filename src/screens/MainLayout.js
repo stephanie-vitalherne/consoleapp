@@ -3,7 +3,6 @@ import {
   Text,
   View,
   TouchableOpacity,
-  TouchableWithoutFeedback,
   FlatList,
   Image,
   StyleSheet,
@@ -15,8 +14,9 @@ import Animated, {
 } from 'react-native-reanimated';
 import { connect } from 'react-redux';
 import Icon from 'react-native-dynamic-vector-icons';
+import LinearGradient from 'react-native-linear-gradient';
 
-import { Header } from '../components';
+import { Header, TabButton } from '../components';
 import { Dashboard, Buckets } from '../screens';
 import { COLORS, SIZES, FONTS, constants, images } from '../../constants';
 import { setSelectedTab } from '../../store/tab/tabActions';
@@ -55,10 +55,27 @@ const MainLayout = ({
           </TouchableOpacity>
         }
       />
+
       <View style={styles.contentContainer}>
         <Text>MainLayout</Text>
       </View>
-      {/* Footer */}
+
+      <View style={styles.footer}>
+        <LinearGradient
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 4 }}
+          colors={[COLORS.transparent, COLORS.lightGray]}
+          style={styles.gradient}
+        />
+        <View style={styles.tabsContainer}>
+          <TabButton
+            icon="home"
+            label={constants.screens.home}
+            isFocused={selectedTab == constants.screens.home}
+            onPress={() => setSelectedTab(constants.screens.home)}
+          />
+        </View>
+      </View>
     </Animated.View>
   );
 };
@@ -66,9 +83,7 @@ const MainLayout = ({
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FFF',
+    backgroundColor: COLORS.white,
   },
   header: {
     height: 50,
@@ -97,6 +112,28 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: SIZES.radius,
+  },
+  footer: {
+    height: 100,
+    justifyContent: 'flex-end',
+  },
+  gradient: {
+    position: 'absolute',
+    top: -20,
+    left: 0,
+    right: 0,
+    height: 100,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+  },
+  tabsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingHorizontal: SIZES.radius,
+    paddingBottom: 10,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    backgroundColor: COLORS.white,
   },
 });
 
