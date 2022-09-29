@@ -5,7 +5,7 @@ import { legacy_createStore as createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
-import DrawerStack from './DrawerStack';
+import Tabs from './TabStack';
 import rootReducer from '../store/rootReducer';
 
 const Stack = createNativeStackNavigator();
@@ -18,7 +18,7 @@ export default () => (
         screenOptions={{
           headerShown: false,
         }}>
-        <Stack.Screen name="Home" component={DrawerStack} />
+        <Stack.Screen name="Home" component={Tabs} />
       </Stack.Navigator>
     </NavigationContainer>
   </Provider>
