@@ -3,8 +3,8 @@ import { View, Image, Pressable, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { Invoice, Profile } from '../src/screens';
-import { DashboardStack, BucketsStack } from './ScreenStack';
+import { Invoice, Profile, AddData } from '../src/screens';
+import { DashboardStack, BucketsStack, ModalStack } from './ScreenStack';
 import { COLORS } from '../constants';
 import { home, folder, invoice, plus, profile } from '../constants/icons';
 
@@ -28,6 +28,7 @@ const Tabs = () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: styles.tabBar,
+        gestureEnabled: true,
       }}>
       <Tab.Screen
         name={'Dashboard'}
@@ -67,13 +68,19 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="AddBucket"
-        component={BucketsStack}
+        component={ModalStack}
         options={{
-          tabBarIcon: ({ focused }) => (
+          tabBarIcon: () => (
             <Image source={plus} style={styles.plusBtn} resizeMode="contain" />
           ),
           tabBarButton: props => <TabBarCustomButton {...props} />,
         }}
+        listeners={({ navigation }) => ({
+          tabPress: event => {
+            event.preventDefault();
+            navigation.navigate('AddBucket');
+          },
+        })}
       />
       <Tab.Screen
         name={'Invoice'}

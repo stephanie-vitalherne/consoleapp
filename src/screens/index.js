@@ -3,6 +3,7 @@ export { default as MainLayout } from './MainLayout';
 export { default as Buckets } from './BucketsScreen';
 export { default as Invoice } from './InvoiceScreen';
 export { default as Profile } from './ProfileScreen';
+export { default as AddData } from './AddDataScreen';
 export { default as Dashboard } from './DashboardScreen';
 export { default as Onboarding } from './OnboardingScreen';
 export { default as Notifications } from './NotificationsScreen';
