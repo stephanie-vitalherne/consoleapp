@@ -3,7 +3,8 @@ import { View, Image, Pressable, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import LinearGradient from 'react-native-linear-gradient';
 
-import { Dashboard, Buckets, Invoice, Profile } from '../src/screens';
+import { Invoice, Profile } from '../src/screens';
+import { DashboardStack, BucketsStack } from './ScreenStack';
 import { COLORS } from '../constants';
 import { home, folder, invoice, plus, profile } from '../constants/icons';
 
@@ -24,12 +25,13 @@ const Tabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: styles.tabBar,
       }}>
       <Tab.Screen
         name={'Dashboard'}
-        component={Dashboard}
+        component={DashboardStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarSquare}>
@@ -47,7 +49,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name={'Buckets'}
-        component={Buckets}
+        component={BucketsStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tabBarSquare}>
@@ -65,7 +67,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="AddBucket"
-        component={Buckets}
+        component={BucketsStack}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image source={plus} style={styles.plusBtn} resizeMode="contain" />
@@ -139,7 +141,7 @@ const styles = StyleSheet.create({
     tintColor: COLORS.white,
   },
   customButton: {
-    top: -30,
+    top: -25,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -163,7 +165,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     padding: 10,
     width: '100%',
-    height: 84,
+    height: 90,
     zIndex: 0,
   },
 });

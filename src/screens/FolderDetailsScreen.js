@@ -10,17 +10,13 @@ const DashboardScreen = () => {
   return (
     <ScrollView style={styles.container}>
       <Pressable
-        style={styles.fakeNotBox}
-        onPress={() => navigation.navigate('Notifications')}
+        style={styles.fakeArrowBox}
+        onPress={() => navigation.goBack()}
       />
       <Image
-        source={images.home}
+        source={images.folderDetails}
         resizeMode="cover"
         style={{ height: SIZES.height, width: SIZES.width }}
-      />
-      <Pressable
-        style={styles.fakeBox}
-        onPress={() => navigation.navigate('FolderDetails')}
       />
     </ScrollView>
   );
@@ -30,25 +26,17 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: COLORS.white,
   },
-  fakeNotBox: {
-    zIndex: 100,
-    width: 40,
-    height: 40,
-    position: 'absolute',
-    top: 50,
-    right: 20,
-  },
   image: {
     height: SIZES.height,
     width: SIZES.width,
     position: 'relative',
   },
-  fakeBox: {
+  fakeArrowBox: {
     zIndex: 100,
-    width: 150,
-    height: 150,
+    width: 40,
+    height: 40,
     position: 'absolute',
-    bottom: 260,
+    top: 50,
     left: 20,
     right: 0,
   },

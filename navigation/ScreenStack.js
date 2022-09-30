@@ -1,0 +1,32 @@
+import React from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import {
+  Dashboard,
+  Notifications,
+  Buckets,
+  BucketDetails,
+  FolderDetails,
+} from '../src/screens';
+
+const Stack = createNativeStackNavigator();
+
+export const DashboardStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="DashboardScreen" component={Dashboard} />
+      <Stack.Screen name="Notifications" component={Notifications} />
+      <Stack.Screen name="FolderDetails" component={FolderDetails} />
+    </Stack.Navigator>
+  );
+};
+
+export const BucketsStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="BucketsScreen" component={Buckets} />
+      <Stack.Screen name="BucketDetails" component={BucketDetails} />
+      <Stack.Screen name="FolderDetails" component={FolderDetails} />
+    </Stack.Navigator>
+  );
+};
