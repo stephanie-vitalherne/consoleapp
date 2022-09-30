@@ -1,5 +1,6 @@
 const logo = require('../assets/images/logo.png');
 const home = require('../assets/images/homeScreen.png');
+const login = require('../assets/images/loginScreen.png');
 const buckets = require('../assets/images/bucketsScreen.png');
 const invoice = require('../assets/images/invoiceScreen.png');
 const profile = require('../assets/images/profileScreen.png');
@@ -10,6 +11,7 @@ const folderDetails = require('../assets/images/folderDetailsScreen.png');
 export default {
   logo,
   home,
+  login,
   buckets,
   invoice,
   profile,

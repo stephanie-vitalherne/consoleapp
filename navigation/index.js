@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
 import Tabs from './TabStack';
+import { Login } from '../src/screens';
 import rootReducer from '../store/rootReducer';
 
 const Stack = createNativeStackNavigator();
@@ -15,9 +16,11 @@ export default () => (
   <Provider store={store}>
     <NavigationContainer>
       <Stack.Navigator
+        initialRouteName="Login"
         screenOptions={{
           headerShown: false,
         }}>
+        <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={Tabs} />
       </Stack.Navigator>
     </NavigationContainer>
